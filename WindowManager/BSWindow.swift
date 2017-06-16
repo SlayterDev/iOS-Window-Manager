@@ -76,6 +76,8 @@ class BSWindow: UIView {
         
         if isDragging {
             center = CGPoint(x: point.x + touchOffset.x, y: point.y + touchOffset.y)
+            frame.origin.y = max(frame.origin.y, 0)
+            frame.origin.y = min(superview!.frame.height - WindowToolbar.defaultToolbarHeight, frame.origin.y)
         }
     }
     

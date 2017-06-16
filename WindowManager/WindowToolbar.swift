@@ -31,7 +31,7 @@ class WindowToolbar: UIView {
         
         let btnSpacing = 8
         let closeBtn = UIButton().then {
-            $0.backgroundColor = .red
+            $0.backgroundColor = Colors.closeBtnRed
             $0.layer.cornerRadius = StandardSizes.toolbarButtonWidth / 2
             $0.addTarget(self, action: #selector(closeWindow), for: .touchUpInside)
             
@@ -44,7 +44,7 @@ class WindowToolbar: UIView {
         }
         
         let hideBtn = UIButton().then {
-            $0.backgroundColor = .yellow
+            $0.backgroundColor = Colors.hideBtnYellow
             $0.layer.cornerRadius = StandardSizes.toolbarButtonWidth / 2
             
             self.addSubview($0)
@@ -56,7 +56,7 @@ class WindowToolbar: UIView {
         }
         
         let _ = UIButton().then {
-            $0.backgroundColor = .green
+            $0.backgroundColor = Colors.maxBtnGreen
             $0.layer.cornerRadius = StandardSizes.toolbarButtonWidth / 2
             $0.addTarget(self, action: #selector(maximizeWindow), for: .touchUpInside)
             
