@@ -22,7 +22,7 @@ class BSWindow: UIView {
     private var dragView: DragView!
     
     private var isDragging = false
-    private(set) var isResizing = false
+    var isResizing = false
     private var touchOffset: CGPoint = .zero
     
     private(set) var contentView: UIView!
@@ -100,12 +100,14 @@ class BSWindow: UIView {
     
     func handleResizeWindowBegan(touchLocation: CGPoint) {
         isResizing = true
-        touchOffset = distance(a: center, b: touchLocation)
-//        superview?.bringSubview(toFront: self)
+        
+        let maxFramePoint = convert(CGPoint(x: frame.size.width, y: frame.size.height), to: superview)
+        
+        touchOffset = distance(a: maxFramePoint, b: touchLocation)
     }
     
     func handleResizeWindow(touchLocation: CGPoint) {
-        var newSize = CGSize(width: touchLocation.x, height: touchLocation.y)
+        var newSize = CGSize(width: touchLocation.x + touchOffset.x, height: touchLocation.y + touchOffset.y)
         newSize.width = max(newSize.width, 200)
         newSize.height = max(newSize.height, WindowToolbar.defaultToolbarHeight * 2)
         frame.size = newSize

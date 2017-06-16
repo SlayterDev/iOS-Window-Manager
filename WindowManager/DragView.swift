@@ -34,5 +34,9 @@ class DragView: UIImageView {
             parentWindow.handleResizeWindow(touchLocation: point)
         }
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        parentWindow?.isResizing = false
+    }
 
 }
