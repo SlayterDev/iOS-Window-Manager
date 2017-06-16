@@ -1,0 +1,27 @@
+PODS:
+  - BSColorUtils (1.0.2)
+  - SnapKit (3.2.0)
+  - Then (2.1.0)
+
+DEPENDENCIES:
+  - BSColorUtils (from `https://github.com/SlayterDev/BSColorUtils`)
+  - SnapKit
+  - Then
+
+EXTERNAL SOURCES:
+  BSColorUtils:
+    :git: https://github.com/SlayterDev/BSColorUtils
+
+CHECKOUT OPTIONS:
+  BSColorUtils:
+    :commit: 953ec48826fb938045771af49c57087218d8ee9f
+    :git: https://github.com/SlayterDev/BSColorUtils
+
+SPEC CHECKSUMS:
+  BSColorUtils: af322f5fae883bf102fcdf04afc26e56496e2829
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  Then: 8496793c8fcac95482b943909b440724c7d8d82c
+
+PODFILE CHECKSUM: baf74a22589a8bb49192b62e9757f05534cafd27
+
+COCOAPODS: 1.2.1
