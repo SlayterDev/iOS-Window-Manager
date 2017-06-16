@@ -16,9 +16,13 @@ func distance(a: CGPoint, b: CGPoint) -> CGPoint {
 
 class BSWindow: UIView {
     
+    weak var delegate: WindowDelegate?
+    
     private var toolbar: WindowToolbar!
+    private var dragView: DragView!
     
     private var isDragging = false
+    private(set) var isResizing = false
     private var touchOffset: CGPoint = .zero
     
     private(set) var contentView: UIView!
@@ -40,6 +44,8 @@ class BSWindow: UIView {
         self.clipsToBounds = true
         
         toolbar = WindowToolbar().then {
+            $0.parentWindow = self
+            
             self.addSubview($0)
             $0.snp.makeConstraints { (make) in
                 make.left.top.width.equalTo(self)
@@ -54,20 +60,70 @@ class BSWindow: UIView {
                 make.left.right.bottom.equalTo(self)
             }
         }
+        
+        dragView = DragView(image: UIImage(named: "DragHandle")).then {
+            $0.parentWindow = self
+            
+            self.addSubview($0)
+            $0.snp.makeConstraints { (make) in
+                make.bottom.right.equalTo(self)
+                make.height.width.equalTo(27)
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.bringSubview(toFront: dragView)
+    }
+    
+    // MARK: - Move Window
+    
+    func handleMoveWindowBegan(touchLocation: CGPoint) {
+        isDragging = true
+        touchOffset = distance(a: center, b: touchLocation)
+        superview?.bringSubview(toFront: self)
+    }
+    
+    func handleMoveWindow(touchLocation: CGPoint) {
+        center = CGPoint(x: touchLocation.x + touchOffset.x, y: touchLocation.y + touchOffset.y)
+        frame.origin.y = max(frame.origin.y, 0)
+        frame.origin.y = min(superview!.frame.height - WindowToolbar.defaultToolbarHeight, frame.origin.y)
+    }
+    
+    // MARK: - Resize Window
+    
+    func handleResizeWindowBegan(touchLocation: CGPoint) {
+        isResizing = true
+        touchOffset = distance(a: center, b: touchLocation)
+//        superview?.bringSubview(toFront: self)
+    }
+    
+    func handleResizeWindow(touchLocation: CGPoint) {
+        var newSize = CGSize(width: touchLocation.x, height: touchLocation.y)
+        newSize.width = max(newSize.width, 200)
+        newSize.height = max(newSize.height, WindowToolbar.defaultToolbarHeight * 2)
+        frame.size = newSize
+    }
+    
+    // MARK: - Touch Methods
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        superview?.bringSubview(toFront: self)
+        
         let point = touches.first!.location(in: superview)
         let toolbarRect = convert(toolbar.frame, to: superview)
+        let dragHandleRect = convert(dragView.frame, to: superview)
         
         if toolbarRect.contains(point) {
-            isDragging = true
-            touchOffset = distance(a: center, b: point)
-            superview?.bringSubview(toFront: self)
+            handleMoveWindowBegan(touchLocation: point)
+        } else if dragHandleRect.contains(point) {
+            handleResizeWindowBegan(touchLocation: point)
         }
     }
     
@@ -75,14 +131,15 @@ class BSWindow: UIView {
         let point = touches.first!.location(in: superview)
         
         if isDragging {
-            center = CGPoint(x: point.x + touchOffset.x, y: point.y + touchOffset.y)
-            frame.origin.y = max(frame.origin.y, 0)
-            frame.origin.y = min(superview!.frame.height - WindowToolbar.defaultToolbarHeight, frame.origin.y)
+            handleMoveWindow(touchLocation: point)
+        } else if isResizing {
+            handleResizeWindow(touchLocation: touches.first!.location(in: self))
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         isDragging = false
+        isResizing = false
     }
 
 }

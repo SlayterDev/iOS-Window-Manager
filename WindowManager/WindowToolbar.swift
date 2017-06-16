@@ -10,9 +10,15 @@ import UIKit
 import Then
 import SnapKit
 
+protocol WindowDelegate: class {
+    func windowDidClose(window: BSWindow)
+}
+
 class WindowToolbar: UIView {
     
     static let defaultToolbarHeight: CGFloat = 40
+    
+    weak var parentWindow: BSWindow?
     
     var previousFrame: CGRect?
     var isMaximized = false
@@ -81,7 +87,10 @@ class WindowToolbar: UIView {
     }
     
     func closeWindow() {
-        superview?.removeFromSuperview()
+        if let parent = parentWindow {
+            parent.delegate?.windowDidClose(window: parent)
+            parent.removeFromSuperview()
+        }
     }
     
     func restoreWindow() {
