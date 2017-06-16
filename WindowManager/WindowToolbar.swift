@@ -14,7 +14,7 @@ protocol WindowDelegate: class {
     func windowDidClose(window: BSWindow)
 }
 
-class WindowToolbar: UIView {
+class WindowToolbar: UIView, UIGestureRecognizerDelegate {
     
     static let defaultToolbarHeight: CGFloat = 40
     
@@ -80,10 +80,26 @@ class WindowToolbar: UIView {
                 make.center.equalTo(self)
             }
         }
+        
+        let _ = UITapGestureRecognizer().then {
+            $0.numberOfTapsRequired = 2
+            $0.numberOfTouchesRequired = 1
+            $0.delegate = self
+            $0.addTarget(self, action: #selector(maximizeWindow))
+            self.addGestureRecognizer($0)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view is UIControl {
+            return false
+        }
+        
+        return true
     }
     
     func closeWindow() {
