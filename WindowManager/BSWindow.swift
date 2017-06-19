@@ -16,7 +16,14 @@ func distance(a: CGPoint, b: CGPoint) -> CGPoint {
 
 class BSWindow: UIView {
     
+    var windowTitle: String? {
+        didSet {
+            toolbar?.title = windowTitle
+        }
+    }
+    
     weak var delegate: WindowDelegate?
+    weak var childController: WindowViewController?
     
     private var toolbar: WindowToolbar!
     private var dragView: DragView!
@@ -107,9 +114,15 @@ class BSWindow: UIView {
     }
     
     func handleResizeWindow(touchLocation: CGPoint) {
+        var minSize = StandardSizes.minimumWindowSize
+        
+        if let windowController = childController {
+            minSize = windowController.minimumWindowSize
+        }
+        
         var newSize = CGSize(width: touchLocation.x + touchOffset.x, height: touchLocation.y + touchOffset.y)
-        newSize.width = max(newSize.width, 200)
-        newSize.height = max(newSize.height, WindowToolbar.defaultToolbarHeight * 2)
+        newSize.width = max(newSize.width, minSize.width)
+        newSize.height = max(newSize.height, minSize.height)
         frame.size = newSize
     }
     

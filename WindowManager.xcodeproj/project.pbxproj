@@ -17,6 +17,8 @@
 		41EC1B7D1EF4313200E14417 /* StandardOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC1B7C1EF4313200E14417 /* StandardOptions.swift */; };
 		41EC1B801EF4572900E14417 /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC1B7F1EF4572900E14417 /* DragView.swift */; };
 		41EC1B821EF4620900E14417 /* TouchFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC1B811EF4620900E14417 /* TouchFilter.swift */; };
+		41EC1B861EF7FC8100E14417 /* TextEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC1B851EF7FC8100E14417 /* TextEditViewController.swift */; };
+		41EC1B891EF7FCB900E14417 /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC1B881EF7FCB900E14417 /* WindowViewController.swift */; };
 		E875D7D79E95D0DC20A9AC1C /* Pods_WindowManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99858B414C50587416B9AA3 /* Pods_WindowManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 		41EC1B7C1EF4313200E14417 /* StandardOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardOptions.swift; sourceTree = "<group>"; };
 		41EC1B7F1EF4572900E14417 /* DragView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 		41EC1B811EF4620900E14417 /* TouchFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchFilter.swift; sourceTree = "<group>"; };
+		41EC1B851EF7FC8100E14417 /* TextEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditViewController.swift; sourceTree = "<group>"; };
+		41EC1B881EF7FCB900E14417 /* WindowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
 		480C5DE03381D1BF927FDB0F /* Pods-WindowManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WindowManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WindowManager/Pods-WindowManager.debug.xcconfig"; sourceTree = "<group>"; };
 		B99858B414C50587416B9AA3 /* Pods_WindowManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WindowManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -71,14 +75,12 @@
 		41EC1B651EF42F7700E14417 /* WindowManager */ = {
 			isa = PBXGroup;
 			children = (
-				41EC1B7E1EF43C2C00E14417 /* ExampleViews */,
 				41EC1B661EF42F7700E14417 /* AppDelegate.swift */,
-				41EC1B681EF42F7700E14417 /* ViewController.swift */,
-				41EC1B781EF42F8F00E14417 /* BSWindow.swift */,
-				41EC1B7A1EF4306C00E14417 /* WindowToolbar.swift */,
 				41EC1B7C1EF4313200E14417 /* StandardOptions.swift */,
-				41EC1B7F1EF4572900E14417 /* DragView.swift */,
-				41EC1B811EF4620900E14417 /* TouchFilter.swift */,
+				41EC1B8C1EF80AD200E14417 /* Manager */,
+				41EC1B8A1EF80A8C00E14417 /* App ViewControllers */,
+				41EC1B8B1EF80AA400E14417 /* Window Classes */,
+				41EC1B7E1EF43C2C00E14417 /* ExampleViews */,
 				41EC1B6A1EF42F7700E14417 /* Main.storyboard */,
 				41EC1B6D1EF42F7700E14417 /* Assets.xcassets */,
 				41EC1B6F1EF42F7700E14417 /* LaunchScreen.storyboard */,
@@ -90,8 +92,44 @@
 		41EC1B7E1EF43C2C00E14417 /* ExampleViews */ = {
 			isa = PBXGroup;
 			children = (
+				41EC1B871EF7FC8600E14417 /* Simple Text Edit */,
 			);
 			name = ExampleViews;
+			sourceTree = "<group>";
+		};
+		41EC1B871EF7FC8600E14417 /* Simple Text Edit */ = {
+			isa = PBXGroup;
+			children = (
+				41EC1B851EF7FC8100E14417 /* TextEditViewController.swift */,
+			);
+			name = "Simple Text Edit";
+			sourceTree = "<group>";
+		};
+		41EC1B8A1EF80A8C00E14417 /* App ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				41EC1B681EF42F7700E14417 /* ViewController.swift */,
+			);
+			name = "App ViewControllers";
+			sourceTree = "<group>";
+		};
+		41EC1B8B1EF80AA400E14417 /* Window Classes */ = {
+			isa = PBXGroup;
+			children = (
+				41EC1B881EF7FCB900E14417 /* WindowViewController.swift */,
+				41EC1B781EF42F8F00E14417 /* BSWindow.swift */,
+				41EC1B7A1EF4306C00E14417 /* WindowToolbar.swift */,
+				41EC1B7F1EF4572900E14417 /* DragView.swift */,
+				41EC1B811EF4620900E14417 /* TouchFilter.swift */,
+			);
+			name = "Window Classes";
+			sourceTree = "<group>";
+		};
+		41EC1B8C1EF80AD200E14417 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Manager;
 			sourceTree = "<group>";
 		};
 		5790ECE026FE0997CF1042BB /* Pods */ = {
@@ -235,8 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				41EC1B791EF42F8F00E14417 /* BSWindow.swift in Sources */,
+				41EC1B861EF7FC8100E14417 /* TextEditViewController.swift in Sources */,
 				41EC1B7B1EF4306C00E14417 /* WindowToolbar.swift in Sources */,
 				41EC1B801EF4572900E14417 /* DragView.swift in Sources */,
+				41EC1B891EF7FCB900E14417 /* WindowViewController.swift in Sources */,
 				41EC1B821EF4620900E14417 /* TouchFilter.swift in Sources */,
 				41EC1B691EF42F7700E14417 /* ViewController.swift in Sources */,
 				41EC1B671EF42F7700E14417 /* AppDelegate.swift in Sources */,

@@ -19,5 +19,7 @@ struct Colors {
 
 struct StandardSizes {
     static let toolbarButtonWidth: CGFloat = 19
+    
     static let defaultWindowSize: CGSize = CGSize(width: 320, height: 480)
+    static let minimumWindowSize: CGSize = CGSize(width: 200, height: 80)
 }
