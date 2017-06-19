@@ -23,6 +23,8 @@ class WindowManager: NSObject, WindowDelegate, TouchFilterDelegate {
     }
     
     func createWindow(_ windowVC: WindowViewController) {
+        focusedWindow?.unfocusWindow()
+        
         let window = BSWindow(withTitle: windowVC.windowTitle).then {
             $0.delegate = self
             focusedWindow = $0
@@ -71,8 +73,53 @@ class WindowManager: NSObject, WindowDelegate, TouchFilterDelegate {
     }
     
     func focus(window: BSWindow) {
+        focusedWindow?.unfocusWindow()
+        
         desktop.view.bringSubview(toFront: window)
         desktop.view.bringSubview(toFront: desktop.touchFilter)
         focusedWindow = window
+        focusedWindow?.focusWindow()
+    }
+    
+    func snapLeft() {
+        guard let focusedWindow = focusedWindow else { return }
+        
+        let deskFrame = desktop.view.frame
+        let leftFrame = CGRect(x: 0, y: 0, width: deskFrame.width / 2, height: deskFrame.height)
+        
+        UIView.animate(withDuration: 0.125, animations: {
+            focusedWindow.frame = leftFrame
+        })
+    }
+    
+    func snapRight() {
+        guard let focusedWindow = focusedWindow else { return }
+        
+        let deskFrame = desktop.view.frame
+        let rightFrame = CGRect(x: deskFrame.width / 2, y: 0, width: deskFrame.width / 2, height: deskFrame.height)
+        
+        UIView.animate(withDuration: 0.125, animations: {
+            focusedWindow.frame = rightFrame
+        })
+    }
+    
+    func closeFocusedWindow() {
+        focusedWindow?.toolbar?.closeWindow()
+        
+        if let lastWindow = windows.last {
+            focus(window: lastWindow)
+        }
+    }
+    
+    func cycleWindows() {
+        guard let focusedWindow = focusedWindow else { return }
+        guard let curIndex = windows.index(of: focusedWindow) else { return }
+        
+        var nextIndex = curIndex + 1
+        if nextIndex >= windows.count {
+            nextIndex = 0
+        }
+        
+        focus(window: windows[nextIndex])
     }
 }

@@ -1,10 +1,16 @@
 PODS:
   - BSColorUtils (1.0.2)
+  - Realm (2.8.0):
+    - Realm/Headers (= 2.8.0)
+  - Realm/Headers (2.8.0)
+  - RealmSwift (2.8.0):
+    - Realm (= 2.8.0)
   - SnapKit (3.2.0)
   - Then (2.1.0)
 
 DEPENDENCIES:
   - BSColorUtils (from `https://github.com/SlayterDev/BSColorUtils`)
+  - RealmSwift
   - SnapKit
   - Then
 
@@ -19,9 +25,11 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   BSColorUtils: af322f5fae883bf102fcdf04afc26e56496e2829
+  Realm: 929243ad2b618b3232e70658bedc61110e7563f1
+  RealmSwift: 5b7079b891f2833d1849294161ba3e092bbda3f6
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   Then: 8496793c8fcac95482b943909b440724c7d8d82c
 
-PODFILE CHECKSUM: baf74a22589a8bb49192b62e9757f05534cafd27
+PODFILE CHECKSUM: 2f0134ce85db675259a2239b631cab282dd145af
 
 COCOAPODS: 1.2.1

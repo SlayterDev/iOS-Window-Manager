@@ -11,6 +11,7 @@ import BSColorUtils
 
 struct Colors {
     static let toolbarGrey = UIColor.with(hex: "#EFEFEF")
+    static let toolbarDarkGrey = UIColor.with(hex: "#AFAFAF")
     
     static let closeBtnRed = UIColor.with(hex: "#FB4847")
     static let hideBtnYellow = UIColor.with(hex: "#FBD325")

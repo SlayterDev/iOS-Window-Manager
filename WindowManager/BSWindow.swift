@@ -25,7 +25,7 @@ class BSWindow: UIView {
     weak var delegate: WindowDelegate?
     weak var childController: WindowViewController?
     
-    private var toolbar: WindowToolbar!
+    private(set) var toolbar: WindowToolbar!
     private var dragView: DragView!
     
     private var isDragging = false
@@ -38,6 +38,7 @@ class BSWindow: UIView {
         self.init(frame: CGRect(x: 0, y: 0, width: windowSize.width, height: windowSize.height))
         
         windowTitle = title
+        toolbar.title = title
     }
     
     override init(frame: CGRect) {
@@ -97,6 +98,14 @@ class BSWindow: UIView {
         } else {
             childController.removeFromParentViewController()
         }
+    }
+    
+    func focusWindow() {
+        toolbar.backgroundColor = Colors.toolbarGrey
+    }
+    
+    func unfocusWindow() {
+        toolbar.backgroundColor = Colors.toolbarDarkGrey
     }
     
     // MARK: - Move Window

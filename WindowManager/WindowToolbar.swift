@@ -20,7 +20,7 @@ class WindowToolbar: UIView, UIGestureRecognizerDelegate {
     
     weak var parentWindow: BSWindow?
     
-    var previousFrame: CGRect?
+    private var previousFrame: CGRect?
     var isMaximized = false
     
     private var windowTitleLabel: UILabel!

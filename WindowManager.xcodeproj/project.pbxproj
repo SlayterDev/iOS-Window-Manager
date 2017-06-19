@@ -20,6 +20,8 @@
 		41EC1B861EF7FC8100E14417 /* TextEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC1B851EF7FC8100E14417 /* TextEditViewController.swift */; };
 		41EC1B891EF7FCB900E14417 /* WindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC1B881EF7FCB900E14417 /* WindowViewController.swift */; };
 		41EC1B8E1EF80B1A00E14417 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC1B8D1EF80B1A00E14417 /* WindowManager.swift */; };
+		41EC1B911EF8306A00E14417 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC1B901EF8306A00E14417 /* TodoModel.swift */; };
+		41EC1B931EF8316B00E14417 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41EC1B921EF8316B00E14417 /* TodoListViewController.swift */; };
 		E875D7D79E95D0DC20A9AC1C /* Pods_WindowManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99858B414C50587416B9AA3 /* Pods_WindowManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		41EC1B851EF7FC8100E14417 /* TextEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditViewController.swift; sourceTree = "<group>"; };
 		41EC1B881EF7FCB900E14417 /* WindowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowViewController.swift; sourceTree = "<group>"; };
 		41EC1B8D1EF80B1A00E14417 /* WindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		41EC1B901EF8306A00E14417 /* TodoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
+		41EC1B921EF8316B00E14417 /* TodoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		480C5DE03381D1BF927FDB0F /* Pods-WindowManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WindowManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WindowManager/Pods-WindowManager.debug.xcconfig"; sourceTree = "<group>"; };
 		B99858B414C50587416B9AA3 /* Pods_WindowManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WindowManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -94,6 +98,7 @@
 		41EC1B7E1EF43C2C00E14417 /* ExampleViews */ = {
 			isa = PBXGroup;
 			children = (
+				41EC1B8F1EF8304700E14417 /* ToDo List */,
 				41EC1B871EF7FC8600E14417 /* Simple Text Edit */,
 			);
 			name = ExampleViews;
@@ -133,6 +138,15 @@
 				41EC1B8D1EF80B1A00E14417 /* WindowManager.swift */,
 			);
 			name = Manager;
+			sourceTree = "<group>";
+		};
+		41EC1B8F1EF8304700E14417 /* ToDo List */ = {
+			isa = PBXGroup;
+			children = (
+				41EC1B901EF8306A00E14417 /* TodoModel.swift */,
+				41EC1B921EF8316B00E14417 /* TodoListViewController.swift */,
+			);
+			name = "ToDo List";
 			sourceTree = "<group>";
 		};
 		5790ECE026FE0997CF1042BB /* Pods */ = {
@@ -275,9 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41EC1B931EF8316B00E14417 /* TodoListViewController.swift in Sources */,
 				41EC1B791EF42F8F00E14417 /* BSWindow.swift in Sources */,
 				41EC1B861EF7FC8100E14417 /* TextEditViewController.swift in Sources */,
 				41EC1B7B1EF4306C00E14417 /* WindowToolbar.swift in Sources */,
+				41EC1B911EF8306A00E14417 /* TodoModel.swift in Sources */,
 				41EC1B801EF4572900E14417 /* DragView.swift in Sources */,
 				41EC1B891EF7FCB900E14417 /* WindowViewController.swift in Sources */,
 				41EC1B821EF4620900E14417 /* TouchFilter.swift in Sources */,
