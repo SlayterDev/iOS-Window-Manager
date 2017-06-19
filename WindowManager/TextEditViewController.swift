@@ -14,6 +14,12 @@ class TextEditViewController: WindowViewController {
     
     var smallSize: CGSize = CGSize(width: 275, height: 300)
     
+    override var windowTitle: String {
+        get {
+            return "Text Editor"
+        }
+    }
+    
     override var wantsNavigationController: Bool {
         get {
             return true

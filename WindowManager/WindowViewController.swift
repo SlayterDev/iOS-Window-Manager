@@ -16,7 +16,7 @@ class WindowViewController: UIViewController, WindowControllerDelegate {
     
     var windowTitle: String {
         get {
-            return "Text Editor"
+            return "Untitled Window"
         }
     }
     

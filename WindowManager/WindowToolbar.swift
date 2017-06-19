@@ -105,6 +105,7 @@ class WindowToolbar: UIView, UIGestureRecognizerDelegate {
     func closeWindow() {
         if let parent = parentWindow {
             parent.delegate?.windowDidClose(window: parent)
+            parent.removeChildController()
             
             let oldCenter = parent.center
             UIView.animate(withDuration: 0.15, animations: {

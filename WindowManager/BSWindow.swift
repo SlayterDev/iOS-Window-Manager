@@ -37,7 +37,7 @@ class BSWindow: UIView {
     convenience init(withTitle title: String?, windowSize: CGSize = StandardSizes.defaultWindowSize) {
         self.init(frame: CGRect(x: 0, y: 0, width: windowSize.width, height: windowSize.height))
         
-        toolbar?.title = title
+        windowTitle = title
     }
     
     override init(frame: CGRect) {
@@ -87,6 +87,16 @@ class BSWindow: UIView {
         super.layoutSubviews()
         
         self.bringSubview(toFront: dragView)
+    }
+    
+    func removeChildController() {
+        guard let childController = childController else { return }
+        
+        if let nav = childController.navigationController {
+            nav.removeFromParentViewController()
+        } else {
+            childController.removeFromParentViewController()
+        }
     }
     
     // MARK: - Move Window
