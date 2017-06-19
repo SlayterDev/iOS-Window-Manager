@@ -26,6 +26,8 @@ class WindowViewController: UIViewController, WindowControllerDelegate {
     
     var minimumWindowSize: CGSize = StandardSizes.minimumWindowSize
     
+    var desiredOrigin: CGPoint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
