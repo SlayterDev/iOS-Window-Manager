@@ -62,6 +62,14 @@ class WindowManager: NSObject, WindowDelegate, TouchFilterDelegate {
         }
     }
     
+    func hideWindow(window: BSWindow) {
+        if let index = windows.index(of: window) {
+            windows.remove(at: index)
+        }
+        
+        desktop.dock.moveWindowToDock(window: window)
+    }
+    
     // MARK: - Touch Filter Delegate
     
     func getWindowList() -> [BSWindow] {

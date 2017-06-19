@@ -12,6 +12,7 @@ import SnapKit
 
 protocol WindowDelegate: class {
     func windowDidClose(window: BSWindow)
+    func hideWindow(window: BSWindow)
 }
 
 class WindowToolbar: UIView, UIGestureRecognizerDelegate {
@@ -20,7 +21,7 @@ class WindowToolbar: UIView, UIGestureRecognizerDelegate {
     
     weak var parentWindow: BSWindow?
     
-    private var previousFrame: CGRect?
+    private(set) var previousFrame: CGRect?
     var isMaximized = false
     
     private var windowTitleLabel: UILabel!
@@ -52,6 +53,7 @@ class WindowToolbar: UIView, UIGestureRecognizerDelegate {
         let hideBtn = UIButton().then {
             $0.backgroundColor = Colors.hideBtnYellow
             $0.layer.cornerRadius = StandardSizes.toolbarButtonWidth / 2
+            $0.addTarget(self, action: #selector(hideWindow), for: .touchUpInside)
             
             self.addSubview($0)
             $0.snp.makeConstraints { (make) in
@@ -115,6 +117,13 @@ class WindowToolbar: UIView, UIGestureRecognizerDelegate {
                 parent.removeFromSuperview()
             })
         }
+    }
+    
+    func hideWindow() {
+        guard let parent = parentWindow else { return }
+        
+        previousFrame = parent.frame
+        parent.delegate?.hideWindow(window: parent)
     }
     
     func restoreWindow() {

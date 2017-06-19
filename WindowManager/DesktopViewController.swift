@@ -12,6 +12,7 @@ import WebKit
 class DesktopViewController: UIViewController {
     
     var touchFilter: TouchFilter!
+    var dock: Dock!
     
     override var keyCommands: [UIKeyCommand]? {
         return [UIKeyCommand(input: UIKeyInputLeftArrow, modifierFlags: .alternate, action: #selector(snapLeft)),
@@ -56,14 +57,22 @@ class DesktopViewController: UIViewController {
             }
         }
         
+        dock = Dock().then {
+            self.view.addSubview($0)
+            let dockHeight = $0.standardItemSize
+            $0.snp.makeConstraints { (make) in
+                make.width.equalTo(self.view)
+                make.height.equalTo(dockHeight)
+                make.bottom.equalTo(self.view).offset(-22)
+            }
+        }
+        
         touchFilter = TouchFilter().then {
             self.view.addSubview($0)
             $0.snp.makeConstraints { (make) in
                 make.edges.equalTo(self.view)
             }
         }
-        
-        
         
         WindowManager.shared.setup(withDesktop: self)
     }
