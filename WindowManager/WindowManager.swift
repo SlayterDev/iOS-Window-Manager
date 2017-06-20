@@ -101,9 +101,9 @@ class WindowManager: NSObject, WindowDelegate, TouchFilterDelegate {
         let deskFrame = desktop.view.frame
         let leftFrame = CGRect(x: 0, y: 0, width: deskFrame.width / 2, height: deskFrame.height)
         
-        UIView.animate(withDuration: 0.125, animations: {
+        UIView.animate(withDuration: 0.125) {
             focusedWindow.frame = leftFrame
-        })
+        }
     }
     
     func snapRight() {
@@ -112,9 +112,9 @@ class WindowManager: NSObject, WindowDelegate, TouchFilterDelegate {
         let deskFrame = desktop.view.frame
         let rightFrame = CGRect(x: deskFrame.width / 2, y: 0, width: deskFrame.width / 2, height: deskFrame.height)
         
-        UIView.animate(withDuration: 0.125, animations: {
+        UIView.animate(withDuration: 0.125) {
             focusedWindow.frame = rightFrame
-        })
+        }
     }
     
     func closeFocusedWindow() {

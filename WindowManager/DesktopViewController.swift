@@ -96,6 +96,8 @@ class DesktopViewController: UIViewController {
         WindowManager.shared.createWindow(todoVC)
     }
     
+    // MARK: - Shortcut wrappers
+    
     func snapLeft() {
         WindowManager.shared.snapLeft()
     }

@@ -123,7 +123,7 @@
 		41EC1B7E1EF43C2C00E14417 /* ExampleViews */ = {
 			isa = PBXGroup;
 			children = (
-				41EC1B8F1EF8304700E14417 /* ToDo List */,
+				41EC1B8F1EF8304700E14417 /* Todo List */,
 				41EC1B871EF7FC8600E14417 /* Simple Text Edit */,
 			);
 			name = ExampleViews;
@@ -165,13 +165,13 @@
 			name = Manager;
 			sourceTree = "<group>";
 		};
-		41EC1B8F1EF8304700E14417 /* ToDo List */ = {
+		41EC1B8F1EF8304700E14417 /* Todo List */ = {
 			isa = PBXGroup;
 			children = (
 				41EC1B901EF8306A00E14417 /* TodoModel.swift */,
 				41EC1B921EF8316B00E14417 /* TodoListViewController.swift */,
 			);
-			name = "ToDo List";
+			name = "Todo List";
 			sourceTree = "<group>";
 		};
 		5790ECE026FE0997CF1042BB /* Pods */ = {
