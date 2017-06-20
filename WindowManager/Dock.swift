@@ -72,7 +72,8 @@ class Dock: UIView {
     }
     
     func restoreDockItem(_ tapGesture: UITapGestureRecognizer) {
-        guard let index = tapGesture.view?.tag else { return }
+        guard let imageView = tapGesture.view else { return }
+        guard let index = dockItems.index(where: { $0.imageView == imageView }) else { return }
         
         let dockItem = dockItems[index]
         
