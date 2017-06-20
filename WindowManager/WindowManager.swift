@@ -54,6 +54,12 @@ class WindowManager: NSObject, WindowDelegate, TouchFilterDelegate {
         desktop.view.bringSubview(toFront: desktop.touchFilter)
     }
     
+    func addWindowToDesktop(window: BSWindow) {
+        windows.append(window)
+        desktop.view.addSubview(window)
+        desktop.view.bringSubview(toFront: desktop.touchFilter)
+    }
+    
     // MARK: - Window Delegate
     
     func windowDidClose(window: BSWindow) {

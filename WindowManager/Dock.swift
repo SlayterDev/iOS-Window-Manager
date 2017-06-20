@@ -74,6 +74,19 @@ class Dock: UIView {
     func restoreDockItem(_ tapGesture: UITapGestureRecognizer) {
         guard let index = tapGesture.view?.tag else { return }
         
+        let dockItem = dockItems[index]
         
+        guard let window = dockItem.window else { return }
+        guard let targetFrame = window.toolbar.previousFrame else { return }
+        
+        WindowManager.shared.addWindowToDesktop(window: window)
+        
+        window.frame = getItemFrame(forIndex: index)
+        UIView.animate(withDuration: 0.25, animations: {
+            self.removeDockItem(dockItem)
+            window.frame = targetFrame
+        }, completion: { _ in
+            WindowManager.shared.focus(window: window)
+        })
     }
 }
