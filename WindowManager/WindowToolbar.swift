@@ -85,7 +85,6 @@ class WindowToolbar: UIView, UIGestureRecognizerDelegate {
         
         let _ = UITapGestureRecognizer().then {
             $0.numberOfTapsRequired = 2
-            $0.numberOfTouchesRequired = 1
             $0.delegate = self
             $0.addTarget(self, action: #selector(maximizeWindow))
             self.addGestureRecognizer($0)

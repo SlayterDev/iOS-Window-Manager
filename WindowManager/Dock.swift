@@ -39,8 +39,6 @@ class Dock: UIView {
             $0.tag = self.dockItems.count
             
             let tapGesture = UITapGestureRecognizer()
-            tapGesture.numberOfTapsRequired = 1
-            tapGesture.numberOfTouchesRequired = 1
             tapGesture.addTarget(self, action: #selector(restoreDockItem(_:)))
             $0.isUserInteractionEnabled = true
             $0.addGestureRecognizer(tapGesture)
